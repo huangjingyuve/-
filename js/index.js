@@ -1,39 +1,80 @@
-window.onload=function(){
-    function task(){  
-        var show=document.querySelector(".show");
-        var spotshow=document.querySelector(".spotshow");
-        show.className="";
-        spotshow.className="";
-        if(show.nextElementSibling!==null){   
-          show.nextElementSibling.className="show";
-          spotshow.nextElementSibling.className="spotshow";
-        }else{
-        show.parentNode.children[0].className="show";
-        spotshow.parentNode.children[0].className="spotshow";
-        }
+window.onload=function()
+{
+  var time=document.getElementById("timer");  
+  
+    div = time.querySelectorAll("div")[0];
+    setTimeout(function(){
+    div.style.visibility="visible";},0);  
+   
+    //定时器累加
+    function play(i){
+      if(i<=429){
+        moveImg(i);
+        setTimeout(function(){play(i+1)}, 0);
+      }
     }
+ 
+    function moveImg(i){
+      div1 = time.querySelectorAll("div")[1]; 
+      div1.innerText=i;
+    }
+    play(300);
 
-    var timer=setInterval(task,2000);
+    function playk(j){
+      if(j<=957){
+        moveImg1(j);
+        setTimeout(function(){playk(j+1)}, 10);
+      }
+    }
+    function moveImg1(j){
+      div2 = time.querySelectorAll("div")[2]; 
+      div2.innerText=j;
+    }
+    playk(700);
     
-    var slider=document.querySelector("#slider");
-    slider.onmouseover=function(){
-      clearInterval(timer);
-      timer=null;
+
+    //four 定时转换
+    for(let n=0;n<8;n++)
+    {
+      console.log(n)
+     setInterval(function(){
+       task(n);
+     },(Math.random()+2)*3000);
     }
-    slider.onmouseout=function(){
-      timer=setInterval(task,1000);
+    function task(i)
+    {
+       if(i<8)
+       {
+        var one=document.getElementsByClassName("face-first")[i];
+        var two=document.getElementsByClassName("face-second")[i];
+        console.log(one)
+
+        if(getComputedStyle(one,null).display=="block")
+        {
+          one.style.display="none";  
+          two.style.display="block";   
+        }
+        else if(getComputedStyle(one,null).display=="none")
+        {
+          console.log(11111)
+          one.style.display="block"; 
+          two.style.display="none"; 
+        }
+       }     
     }
-        //回到顶部 
-       
-    
-    }
-window.onscroll=function(){
-  var toTop=document.querySelector("#toTop");
-  var scrollTop=document.documentElement.scrollTop||document.body.scrollTop;
-  console.log(scrollTop);
-  if(scrollTop>500){
-    toTop.style.display="block";
-  }else{
-    toTop.style.display="none";
-  }
 }
+
+// window.onscroll=function(){
+//   var  scrollTop=document.documentElement.scrollTop||document.body.scrollTop;
+//   var nav=document.getElementById("nav");
+//   console.log(scrollTop);
+//   if(scrollTop>700)
+//   {
+//   nav.style.position="fixed";
+//   nav.style.background="rgba(0,0,0,0)";
+// } 
+
+// }
+
+
+ 

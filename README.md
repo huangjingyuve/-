@@ -5,4 +5,8 @@
 
 
 
-陆淑烨：//index.html 首页
+陆淑烨：index.html 首页
+
+肖钰：square.html广场首页。首页index.html的按钮“随便逛逛”进入的广场页面。
+
+林山龙：register.html注册页面
